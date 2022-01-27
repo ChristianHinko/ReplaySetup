@@ -37,6 +37,50 @@
  *			- This is needed for recording a replay in memory and then saving it to disk when desired.
  *			- E.g. After viewing an instant replay / kill cam, you can save it to disk because it was epic.
  * 
+ * 
+ * 
+ * 
+ * SUMMARY OF THE ENGINE'S REPLAY SYSTEM:
+ * 
+ * 
+ *	UGameInstance::StartRecordingReplay()
+ * 		UReplaySubsystem::RecordReplay()
+ * 			UReplaySubsystem::StopExistingReplays()
+ * 			UEngine::CreateNamedNetDriver()
+ * 			UDemoNetDriver::InitListen()
+ *				UDemoNetDriver::InitBase()
+ * 					FReplayHelper::Init()
+ * 				FReplayHelper::StartRecording()
+ * 					INetworkReplayStreamer::StartStreaming()
+ * 				UDemoNetDriver::SpawnDemoRecSpectator()
+ * 
+ * 
+ *	UGameInstance::StopRecordingReplay()
+ * 		UReplaySubsystem::StopReplay()
+ * 			UReplaySubsystem::StopExistingReplays()
+ * 				UWorld::DestroyDemoNetDriver()
+ * 					UDemoNetDriver::StopDemo()
+ * 						FReplayHelper::StopReplay()
+ * 							INetworkReplayStreamer::StopStreaming()
+ * 					UEngine::DestroyNamedNetDriver()
+ * 
+ * 
+ *	UGameInstance::PlayReplay()
+ * 		UReplaySubsystem::PlayReplay()
+ * 			UReplaySubsystem::StopExistingReplays()
+ * 			UEngine::CreateNamedNetDriver()
+ * 			UDemoNetDriver::InitConnect()
+ *				UDemoNetDriver::InitBase()
+ * 					FReplayHelper::Init()
+ * 				INetworkReplayStreamer::StartStreaming()
+ * 					UDemoNetDriver::ReplayStreamingReady()
+ * 						UDemoNetDriver::InitConnectInternal()
+ * 							NewObject<UDemoPendingNetGame>()
+ *	UEngine::TickWorldTravel()
+ * 		UEngine::LoadMap()
+ * 
+ * 
+ * 
  */
 UCLASS()
 class REPLAYSETUP_API URSDemoNetDriver : public UDemoNetDriver
