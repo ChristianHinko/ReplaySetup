@@ -69,6 +69,6 @@ UGameInstance::PlayReplay()\
 &emsp;&emsp;&emsp;INetworkReplayStreamer::StartStreaming()\
 &emsp;&emsp;&emsp;&emsp;UDemoNetDriver::ReplayStreamingReady()\
 &emsp;&emsp;&emsp;&emsp;&emsp;UDemoNetDriver::InitConnectInternal()\
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NewObject<UDemoPendingNetGame>()\
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NewObject\<UDemoPendingNetGame\>()\
 UEngine::TickWorldTravel()\
 &emsp;UEngine::LoadMap()
