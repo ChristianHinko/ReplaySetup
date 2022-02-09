@@ -34,41 +34,41 @@ Extra Ideas:
 BASIC SUMMARY OF THE ENGINE'S REPLAY SYSTEM:
 
 
-UGameInstance::StartRecordingReplay()
-&emsp;UReplaySubsystem::RecordReplay()
-&emsp;&emsp;UReplaySubsystem::StopExistingReplays()
-&emsp;&emsp;UEngine::CreateNamedNetDriver()
-&emsp;&emsp;UDemoNetDriver::InitListen()
-&emsp;&emsp;&emsp;UDemoNetDriver::InitBase()
-&emsp;&emsp;&emsp;&emsp;FReplayHelper::Init()
-&emsp;&emsp;&emsp;UDemoNetConnection::InitConnection()
-&emsp;&emsp;&emsp;UNetDriver::AddClientConnection()
-&emsp;&emsp;&emsp;FReplayHelper::StartRecording()
-&emsp;&emsp;&emsp;&emsp;INetworkReplayStreamer::StartStreaming()
+UGameInstance::StartRecordingReplay()\
+&emsp;UReplaySubsystem::RecordReplay()\
+&emsp;&emsp;UReplaySubsystem::StopExistingReplays()\
+&emsp;&emsp;UEngine::CreateNamedNetDriver()\
+&emsp;&emsp;UDemoNetDriver::InitListen()\
+&emsp;&emsp;&emsp;UDemoNetDriver::InitBase()\
+&emsp;&emsp;&emsp;&emsp;FReplayHelper::Init()\
+&emsp;&emsp;&emsp;UDemoNetConnection::InitConnection()\
+&emsp;&emsp;&emsp;UNetDriver::AddClientConnection()\
+&emsp;&emsp;&emsp;FReplayHelper::StartRecording()\
+&emsp;&emsp;&emsp;&emsp;INetworkReplayStreamer::StartStreaming()\
 &emsp;&emsp;&emsp;UDemoNetDriver::SpawnDemoRecSpectator()
 
 
-UGameInstance::StopRecordingReplay()
-&emsp;UReplaySubsystem::StopReplay()
-&emsp;&emsp;UReplaySubsystem::StopExistingReplays()
-&emsp;&emsp;&emsp;UWorld::DestroyDemoNetDriver()
-&emsp;&emsp;&emsp;&emsp;UDemoNetDriver::StopDemo()
-&emsp;&emsp;&emsp;&emsp;&emsp;FReplayHelper::StopReplay()
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;INetworkReplayStreamer::StopStreaming()
+UGameInstance::StopRecordingReplay()\
+&emsp;UReplaySubsystem::StopReplay()\
+&emsp;&emsp;UReplaySubsystem::StopExistingReplays()\
+&emsp;&emsp;&emsp;UWorld::DestroyDemoNetDriver()\
+&emsp;&emsp;&emsp;&emsp;UDemoNetDriver::StopDemo()\
+&emsp;&emsp;&emsp;&emsp;&emsp;FReplayHelper::StopReplay()\
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;INetworkReplayStreamer::StopStreaming()\
 &emsp;&emsp;&emsp;&emsp;UEngine::DestroyNamedNetDriver()
 
 
-UGameInstance::PlayReplay()
-&emsp;UReplaySubsystem::PlayReplay()
-&emsp;&emsp;UReplaySubsystem::StopExistingReplays()
-&emsp;&emsp;UEngine::CreateNamedNetDriver()
-&emsp;&emsp;UDemoNetDriver::InitConnect()
-&emsp;&emsp;&emsp;UDemoNetDriver::InitBase()
-&emsp;&emsp;&emsp;&emsp;FReplayHelper::Init()
-&emsp;&emsp;&emsp;UNetConnection::InitConnection()
-&emsp;&emsp;&emsp;INetworkReplayStreamer::StartStreaming()
-&emsp;&emsp;&emsp;&emsp;UDemoNetDriver::ReplayStreamingReady()
-&emsp;&emsp;&emsp;&emsp;&emsp;UDemoNetDriver::InitConnectInternal()
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NewObject<UDemoPendingNetGame>()
-UEngine::TickWorldTravel()
+UGameInstance::PlayReplay()\
+&emsp;UReplaySubsystem::PlayReplay()\
+&emsp;&emsp;UReplaySubsystem::StopExistingReplays()\
+&emsp;&emsp;UEngine::CreateNamedNetDriver()\
+&emsp;&emsp;UDemoNetDriver::InitConnect()\
+&emsp;&emsp;&emsp;UDemoNetDriver::InitBase()\
+&emsp;&emsp;&emsp;&emsp;FReplayHelper::Init()\
+&emsp;&emsp;&emsp;UNetConnection::InitConnection()\
+&emsp;&emsp;&emsp;INetworkReplayStreamer::StartStreaming()\
+&emsp;&emsp;&emsp;&emsp;UDemoNetDriver::ReplayStreamingReady()\
+&emsp;&emsp;&emsp;&emsp;&emsp;UDemoNetDriver::InitConnectInternal()\
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NewObject<UDemoPendingNetGame>()\
+UEngine::TickWorldTravel()\
 &emsp;UEngine::LoadMap()
