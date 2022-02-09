@@ -22,11 +22,11 @@ public:
 
 	static inline FReplaySetupModule& Get()
 	{
-		return FModuleManager::LoadModuleChecked<FReplaySetupModule>(FName("ReplaySetup"));
+		return FModuleManager::LoadModuleChecked<FReplaySetupModule>(FName(TEXT("ReplaySetup")));
 	}
 	static inline bool IsAvailable()
 	{
-		return FModuleManager::Get().IsModuleLoaded(FName("ReplaySetup"));
+		return FModuleManager::Get().IsModuleLoaded(FName(TEXT("ReplaySetup")));
 	}
 
 protected:

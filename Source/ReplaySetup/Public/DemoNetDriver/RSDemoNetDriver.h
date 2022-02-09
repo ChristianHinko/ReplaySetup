@@ -12,6 +12,14 @@
 /**
  * Base Demo Net Driver. (currently adds nothing)
  * 
+ * NOTE: actually im starting to realize that this may not be viable by
+ * subclassing the DemoNetDriver. Most of their stuff is private rather than protected and
+ * a lot of key functions that are protected are not virtual. I guess we should
+ * turn to forking the engine and pull requesting - if we do go this route then i want to
+ * make sure that they accept it (i don't to manage my own fork of the engine i just want to use their engine).
+ * 
+ * 
+ * 
  * Key Goals:
  *		1) Provide a method to play a replay on a particular set of Actors.
  *			- This is needed for a "ghost data" feature (e.g. Sonic Riders time attack).
@@ -43,7 +51,7 @@
  * 
  * 
  * 
- * SUMMARY OF THE ENGINE'S REPLAY SYSTEM:
+ * BASIC SUMMARY OF THE ENGINE'S REPLAY SYSTEM:
  * 
  * 
  *	UGameInstance::StartRecordingReplay()
@@ -95,6 +103,9 @@ class REPLAYSETUP_API URSDemoNetDriver : public UDemoNetDriver
 
 public:
 	URSDemoNetDriver(const FObjectInitializer& ObjectInitializer);
+
+
+	virtual bool InitConnect(class FNetworkNotify* InNotify, const FURL& ConnectURL, FString& Error) override;
 
 protected:
 
